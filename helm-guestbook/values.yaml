@@ -40,6 +40,21 @@ resources: {}
   #  cpu: 100m
   #  memory: 128Mi
 
+readinessProbe:
+  httpGet:
+    path: /healthz
+    port: 9090
+  initialDelaySeconds: 5
+  periodSeconds: 10
+
+livenessProbe:
+  httpGet:
+    path: /live
+    port: 9090
+  initialDelaySeconds: 5
+  periodSeconds: 10
+
+
 nodeSelector: {}
 
 tolerations: []
